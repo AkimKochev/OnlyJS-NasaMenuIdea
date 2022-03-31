@@ -1,0 +1,184 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+@font-face {
+	font-family: "Nasa";
+	src: url(./NasaDings-1Wzj.ttf);
+}
+
+@font-face {
+	font-family: "Archivo";
+	src: url(./Archivo-Medium.ttf);
+}
+
+html,
+body {
+	width: 100%;
+	color: #000;
+	font-family: "Archivo";
+}
+
+ul {
+	list-style: none;
+}
+
+a {
+	text-decoration: none;
+	color: #000;
+}
+
+img {
+	display: block;
+	width: 100%;
+}
+
+main {
+	position: relative;
+	padding: 1.5em 4em;
+	height: 100vh;
+}
+
+.header {
+	position: sticky;
+	top: 0;
+	left: 0;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	z-index: 5;
+}
+
+.menu-icon {
+	cursor: pointer;
+	width: 25px;
+	height: 10px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.menu-icon.active span:nth-child(1) {
+	transform: rotate(45deg) translate(20%);
+}
+
+.menu-icon.active span:nth-child(2) {
+	transform: rotate(-45deg) translate(20%);
+}
+
+.menu-icon > span {
+	width: 100%;
+	height: 3px;
+	background-color: #000;
+	border-radius: 6px;
+	transition: 150ms linear;
+	pointer-events: none;
+}
+
+h1.logo {
+	cursor: pointer;
+	position: relative;
+	top: -5px;
+	font-family: "Nasa", sans-serif;
+}
+
+.content {
+	position: absolute;
+	bottom: 1.5rem;
+	left: 4rem;
+	right: 4rem;
+	display: flex;
+	align-items: start;
+	justify-content: space-between;
+}
+
+/* MENU */
+
+.menu-container {
+	/* overflow-x: hidden; */
+	position: fixed;
+	top: 1.5em;
+	left: 1.5em;
+	bottom: 1.5rem;
+	width: calc(100% - 3em);
+	transform-origin: center;
+	display: grid;
+	place-items: center;
+
+	border-inline: 3px solid #000;
+}
+
+.menu > ul {
+	counter-reset: link-count;
+}
+
+.menu-link {
+	overflow-y: hidden;
+	height: calc(100% + 10px);
+	position: relative;
+}
+
+.menu-link::after {
+	counter-increment: link-count;
+	content: counter(link-count) "";
+	position: absolute;
+	top: 0;
+	left: -10px;
+	color: #000;
+}
+
+.menu-link:nth-child(1) {
+	--link-offset: 10%;
+	--shuffle-offset: -70%;
+}
+
+.menu-link:nth-child(2) {
+	--link-offset: 30%;
+	--shuffle-offset: -30%;
+}
+
+.menu-link:nth-child(3) {
+	--shuffle-offset: 30%;
+}
+
+.menu-link:nth-child(4) {
+	--link-offset: 20%;
+	--shuffle-offset: 70%;
+}
+
+.menu-link:hover .menu-wrapper {
+	transform: translateY(-100%);
+}
+
+.menu-wrapper {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	transition: transform 400ms ease-out;
+	padding-left: var(--link-offset, 0);
+}
+
+.menu-link-text {
+	position: relative;
+	white-space: nowrap;
+	font-size: clamp(3rem, 1.309rem + 6.63vw, 11rem);
+	line-height: 1;
+}
+
+.menu-link-text:last-child {
+	font-style: italic;
+	position: absolute;
+	top: 100%;
+	left: 0;
+}
+
+.shuffle {
+	position: absolute;
+	width: 45vw;
+	pointer-events: none;
+	transition: transform 400ms ease-out;
+	transform: translateY(75%);
+}
