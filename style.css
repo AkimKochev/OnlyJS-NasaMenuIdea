@@ -36,8 +36,9 @@ img {
 }
 
 main {
+	--inline-space: 4rem;
 	position: relative;
-	padding: 1.5em 4em;
+	padding: 1.5em var(--inline-space);
 	height: 100vh;
 }
 
@@ -88,8 +89,8 @@ h1.logo {
 .content {
 	position: absolute;
 	bottom: 1.5rem;
-	left: 4rem;
-	right: 4rem;
+	left: var(--inline-space);
+	right: var(--inline-space);
 	display: flex;
 	align-items: start;
 	justify-content: space-between;
@@ -102,8 +103,8 @@ h1.logo {
 	position: fixed;
 	top: 1.5em;
 	left: 1.5em;
+	right: 1.5em;
 	bottom: 1.5rem;
-	width: calc(100% - 3em);
 	transform-origin: center;
 	display: grid;
 	place-items: center;
@@ -172,7 +173,7 @@ h1.logo {
 	font-style: italic;
 	position: absolute;
 	top: 100%;
-	left: 0;
+	left: var(--link-offset);
 }
 
 .shuffle {
@@ -180,5 +181,23 @@ h1.logo {
 	width: 45vw;
 	pointer-events: none;
 	transition: transform 400ms ease-out;
-	transform: translateY(75%);
+	transform: translateY(70%);
+}
+
+@media screen and (max-width: 890px) {
+	main {
+		--inline-space: 1rem;
+	}
+
+	.menu-container {
+		border: none;
+	}
+
+	.shuffle {
+		width: 100vw;
+	}
+
+	.date-header {
+		display: none;
+	}
 }
